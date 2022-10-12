@@ -1,0 +1,42 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.pagination a {
+  width: 32px;
+  height: 32px;
+  display: block;
+  border: 1px solid #DEE2E6;
+  color: #8898AA;
+  line-height: 32px;
+  text-align: center;
+  text-align: 18px;
+}
+
+.pagination-active a{
+  
+  border-color: #A50A06;
+  background-color: #A50A06;
+  color: #fff;
+
+}
+
+.cart--mini::before{
+  content: "";
+  border:20px solid;
+  border-color: transparent transparent white transparent;
+  position: absolute;
+  top: -30px;
+    right: 10px;
+}
+
+.cart--mini::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  top: -30px;
+}
