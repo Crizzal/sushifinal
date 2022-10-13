@@ -1,24 +1,26 @@
-import logo from "./logo.svg";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navigation from "./Components/Navigation/Navigation";
-import { Route, Routes, useParams } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 
-import "swiper/css";
 import { useEffect, useState } from "react";
-import Footer from "./Components/Footer/Footer";
 import { FaPhoneAlt } from "react-icons/fa";
-import MenuPage from "./Pages/MenuPage";
-import ContactPage from "./Pages/ContactPage";
+import "swiper/css";
+import Footer from "./Components/Footer/Footer";
 import Modal from "./Components/Modal/Modal";
+import ContactPage from "./Pages/ContactPage";
 import IntroducePage from "./Pages/IntroducePage";
-import SushiWayPage from "./Pages/SushiWayPage";
-import ProductDetail from "./Pages/ProductDetail";
-import NewsDetail from "./Pages/NewsDetail";
-import ScrollToTop from "./ultils/scrollToTop";
 import LoginPage from "./Pages/LoginPage";
-import RegisterPage from "./Pages/RegisterPage";
 import MapPage from "./Pages/MapPage";
+import MenuPage from "./Pages/MenuPage";
+import NewsDetail from "./Pages/NewsDetail";
+import ProductDetail from "./Pages/ProductDetail";
+import RegisterPage from "./Pages/RegisterPage";
+import SushiWayPage from "./Pages/SushiWayPage";
+import ScrollToTop from "./ultils/scrollToTop";
+import React from "react";
+
+const LazyMenuPage = React.lazy(() => import("./Pages/MenuPage"));
 
 function App() {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -40,16 +42,16 @@ function App() {
       <Navigation isDropDown={showDropDown} setIsModal={setIsModal} />
       <ScrollToTop>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/menu" element={<LazyMenuPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/introduce" element={<IntroducePage />} />
           <Route path="/sushiway" element={<SushiWayPage />} />
-          <Route path="/detail" element={<ProductDetail />} />
+          <Route path="/detail/:id" element={<ProductDetail />} />
           <Route path="/news" element={<NewsDetail />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/map" element={<MapPage />} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </ScrollToTop>
 

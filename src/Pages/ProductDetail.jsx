@@ -1,31 +1,52 @@
-import React from "react";
+import React, { useEffect, useState, useRouter } from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ProductApi from "../Api/product";
 import gift from "../assets/image/giftIcon.png";
 import ProductDescription from "../Components/Common/ProductDescription";
 import SuggestProduct from "../Components/Common/SuggestProduct";
 import Selling from "../Components/Selling/Selling";
+import { useParams } from "react-router-dom";
+import { formatCurrency } from "../ultils/format";
 
 const ProductDetail = () => {
+  const [product, setProduct] = useState();
+  let { id } = useParams();
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const response = await ProductApi.getProduct(id);
+        setProduct(response.data?.data);
+      } catch (error) {}
+    }
+    fetchProduct();
+  }, []);
+  console.log(product);
+
   return (
     <div className="md:mt-8 px-2 w-full md:max-w-[1360px] m-auto">
       <div className="flex items-center text-base mt-2">
-        <Link to="/" className="inline">Trang chủ</Link> <span className="mx-1">/</span>
-        <Link to="menu" className="inline">Thực đơn</Link> <span className="mx-1">/</span>
+        <Link to="/" className="inline">
+          Trang chủ
+        </Link>
+        <span className="mx-1">/</span>
+        <Link to="menu" className="inline">
+          Thực đơn
+        </Link>
+        <span className="mx-1">/</span>
         <p className="text-[#848484] inline">Chi tiết thực đơn</p>
       </div>
       <div className="md:mt-8 flex gap-5 flex-col md:flex-row">
         <div className="w-full md:w-2/3 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="w-full md:w-1/2 px-2 py-8">
-            <img
-              src="https://sushiway.com.vn/wp-content/uploads/2022/07/Combo-Sashimi-15-10-1-510x510.png"
-              alt=""
-              className="w-full"
-            />
+            <img src={`${product?.Image}`} alt="" className="w-full" />
           </div>
           <div className="flex-1">
             <h1 className="block mb-3 font-semibold text-2xl md:text-3xl">
-              Bụng Cá Hồi Áp Chảo
+              <span
+                dangerouslySetInnerHTML={{ __html: `${product?.Name}` }}
+              ></span>
             </h1>
             <div className="flex items-center gap-2 mb-2">
               <p className="text-base font-semibold text-[#3A445E]">
@@ -34,15 +55,17 @@ const ProductDetail = () => {
               <p className="text-base font-semibold text-[#B61C0B]">
                 Món chiên
               </p>
-              <p className="text-base font-semibold text-[#3A445E]">|</p>{" "}
+              <p className="text-base font-semibold text-[#3A445E]">|</p>
               <p className="text-base font-semibold text-[#3A445E]">
                 Tình trạng:
               </p>
-              <p className="text-base font-semibold text-[#B61C0B]">Còn hàng</p>
+              <p className="text-base font-semibold text-[#B61C0B]">
+                {Number(product?.Amount) > 0 ? "Còn hàng" : "Hết hàng"}
+              </p>
             </div>
             <div className="flex items-center gap-3 mb-2">
               <div className="flex items-center gap-1 text-[#B61C0B]">
-                {Array(5)
+                {Array(product?.Votes || 5)
                   .fill(0)
                   .map((item, index) => (
                     <div key={index}>
@@ -60,10 +83,14 @@ const ProductDetail = () => {
 
             <div className="flex gap-4 mb-5">
               <p className="text-base">Giá:</p>
-              <h2 className="text-3xl text-[#FF0000] font-semibold">95,000₫</h2>
+              <h2 className="text-3xl text-[#FF0000] font-semibold">
+                {formatCurrency(product?.Price)}
+              </h2>
             </div>
 
-            <div className="text-base mb-5 font-semibold">Cá hồi</div>
+            <div className="text-base mb-5 font-semibold">
+              {product?.Materials}
+            </div>
 
             <div className="flex mb-4">
               <div className="px-2 py-2 border border-[#ddd] cursor-pointer bg-[#f9f9f9]">
@@ -145,7 +172,9 @@ const ProductDetail = () => {
                     className="flex items-center justify-between gap-1"
                   >
                     <div>
-                      <h3 className="text-[#2D2D2D] text-sm font-semibold mb-1">NHẬP MÃ: FREESHIP0D</h3>{" "}
+                      <h3 className="text-[#2D2D2D] text-sm font-semibold mb-1">
+                        NHẬP MÃ: FREESHIP0D
+                      </h3>{" "}
                       <p className="text-xs">
                         Áp dụng vào khung giờ 14h - 17h cho giá trị đơn hàng bất
                         kỳ
@@ -164,8 +193,12 @@ const ProductDetail = () => {
       </div>
 
       <div className="flex flex-col md:flex-row gap-4 justify-between px-2">
-        <div className=""><ProductDescription /></div>
-        <div className="w-full md:w-1/4"><SuggestProduct /></div>
+        <div className="max-w-[70%]">
+          <ProductDescription data={product?.Description} />
+        </div>
+        <div className="w-full md:w-1/4">
+          <SuggestProduct />
+        </div>
       </div>
       <Selling />
     </div>

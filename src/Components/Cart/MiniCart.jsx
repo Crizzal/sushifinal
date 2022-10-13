@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { cartSelector } from "../../store/selector";
-import { cartSlice } from "../../store/Slice/cartSlice";
+import cartSlice from "../../store/slice/cartSlice";
 
 // import "../../App.css"
 

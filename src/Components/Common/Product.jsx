@@ -1,23 +1,20 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../../ultils/format";
 
-const Product = ({ key }) => {
+const Product = ({ data: product }) => {
   return (
-    <Link to="/detail" key={key}>
+    <Link to={`/detail/${product?.PRO_ID}`} key={product?.Code}>
       <div className="bg-white rounded-lg p-2 cursor-pointer border border-[#f1f1f1]">
-        <img
-          src="https://sushiway.com.vn/wp-content/uploads/2022/07/Combo-Sashimi-15-12-1-247x296.png"
-          alt=""
-          className="mb-5"
-        />
+        <img src={`${product?.Image}`} alt="" className="mb-5" />
         <div className="mb-1 text-sm text-[#333333] font-semibold">
-          Gà chiên Karaage
+          <span dangerouslySetInnerHTML={{ __html: `${product?.Name}` }}></span>
         </div>
         <div className="flex items-center justify-between mt-2">
           <div className="text-[#B61C0B]">
             <div className="flex items-center gap-1">
-              {Array(5)
+              {Array(product?.Votes || 5)
                 .fill(0)
                 .map((item, index) => (
                   <div key={index}>
@@ -25,7 +22,9 @@ const Product = ({ key }) => {
                   </div>
                 ))}
             </div>
-            <div className="mt-1 text-sm font-semibold">50,000 đ</div>
+            <div className="mt-1 text-sm font-semibold">
+              {formatCurrency(product?.Price)}{" "}
+            </div>
           </div>
           <div className="">
             <img

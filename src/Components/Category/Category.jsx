@@ -1,14 +1,12 @@
 import React from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { useCurrentView } from "../../hooks/useCurrentView";
 
-const Category = () => {
-  const {isMobile} = useCurrentView()
+const Category = ({ data: cate }) => {
+  const { isMobile } = useCurrentView();
   return (
     <div className="w-full">
-      <Swiper
-        slidesPerView={isMobile?3:7}
-      >
+      <Swiper slidesPerView={isMobile ? 3 : 7}>
         <SwiperSlide>
           <a href="flex">
             <img

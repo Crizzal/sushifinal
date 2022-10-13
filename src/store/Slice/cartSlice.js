@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const cartSlice = createSlice({
+const cartSlice = createSlice({
   name: "cart",
   initialState: {
     cart: [
@@ -10,7 +10,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:1
+        id: 1,
       },
       {
         image:
@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:2
+        id: 2,
       },
       {
         image:
@@ -26,7 +26,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:3
+        id: 3,
       },
       {
         image:
@@ -34,7 +34,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:4
+        id: 4,
       },
       {
         image:
@@ -42,7 +42,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:5
+        id: 5,
       },
       {
         image:
@@ -50,7 +50,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:6
+        id: 6,
       },
       {
         image:
@@ -58,7 +58,7 @@ export const cartSlice = createSlice({
         name: "Bụng Cá Hồi Áp Chảo",
         quantity: 2,
         price: 59000,
-        id:7
+        id: 7,
       },
     ],
   },
@@ -72,3 +72,6 @@ export const cartSlice = createSlice({
     },
   },
 });
+
+export const { setCart, deleteItem } = cartSlice.actions;
+export default cartSlice.reducer;

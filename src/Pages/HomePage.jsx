@@ -1,15 +1,31 @@
-import React from "react";
-import Discount from "../Components/Slider/Discount";
-import BannerSlide from "../Components/Slider/BannerSlide";
-import SaleSlide from "../Components/Slider/SaleSlide";
+import React, { useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Category from "../Components/Category/Category";
+import News from "../Components/News/News";
 import OutstandingProduct from "../Components/OutstandingProduct/OutstandingProduct";
 import Selling from "../Components/Selling/Selling";
-import { SwiperSlide, Swiper } from "swiper/react";
 import SideDishes from "../Components/SideDishes/SideDishes";
-import News from "../Components/News/News";
+import BannerSlide from "../Components/Slider/BannerSlide";
+import Discount from "../Components/Slider/Discount";
+import SaleSlide from "../Components/Slider/SaleSlide";
+import { productSelector, productTypeSelector } from "../store/selector";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchProducts,
+  fetchAllProducts,
+  fetchProductTypes,
+} from "../store/slice/productSlice";
 
 const HomePage = () => {
+  const products = useSelector(productSelector);
+  const productTypes = useSelector(productTypeSelector);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+    dispatch(fetchProductTypes());
+  }, []);
+
   return (
     <div className="w-full md:max-w-[1360px] m-auto md:pt-4">
       <div className="flex justify-end">
@@ -19,10 +35,10 @@ const HomePage = () => {
         <Discount />
       </div>
       <div className="px-4 md:px-0">
-        <SaleSlide />
-        <Category />
-        <OutstandingProduct />
-        <Selling />
+        <SaleSlide data={products} />
+        <Category data={productTypes} />
+        <OutstandingProduct data={products} />
+        <Selling data={products} />
         <div className="mt-[60px] hidden md:block">
           <Swiper slidesPerView={3} spaceBetween={20}>
             <SwiperSlide>
