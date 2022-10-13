@@ -26,8 +26,8 @@ const SaleSlide = ({ data: products }) => {
       <Swiper slidesPerView={isMobile ? 2 : 6} spaceBetween={10}>
         {products?.data &&
           products?.data?.map((item, index) => (
-            <SwiperSlide>
-              <Product key={index} data={item} />
+            <SwiperSlide key={index}>
+              <Product data={item} />
             </SwiperSlide>
           ))}
       </Swiper>

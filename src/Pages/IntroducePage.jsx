@@ -1,5 +1,6 @@
 import React from "react";
 import phan from "../assets/image/phan.png";
+import withLayout from "../HOCs/WithLayout";
 
 const IntroducePage = () => {
   return (
@@ -101,26 +102,50 @@ const IntroducePage = () => {
       </div>
 
       <div className="mt-8 flex justify-between flex-col md:flex-row gap-5">
-         <div className="flex flex-col w-full md:w-1/3 items-center">
-            <img className="w-[120px]" src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-1-1-1.png" alt="" />
-            <h2 className="text-xl block mb-3 font-bold">Chọn yêu thích của bạn</h2>
-            <p className="text-center text-base">Chọn bữa ăn yêu thích của bạn và đặt hàng trực tuyến hoặc qua điện thoại. Thật dễ dàng để tùy chỉnh đơn đặt hàng của bạn.</p>
-         </div>
+        <div className="flex flex-col w-full md:w-1/3 items-center">
+          <img
+            className="w-[120px]"
+            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-1-1-1.png"
+            alt=""
+          />
+          <h2 className="text-xl block mb-3 font-bold">
+            Chọn yêu thích của bạn
+          </h2>
+          <p className="text-center text-base">
+            Chọn bữa ăn yêu thích của bạn và đặt hàng trực tuyến hoặc qua điện
+            thoại. Thật dễ dàng để tùy chỉnh đơn đặt hàng của bạn.
+          </p>
+        </div>
 
-         <div className="flex flex-col w-full md:w-1/3 items-center">
-            <img className="w-[120px]" src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-2-2.png" alt="" />
-            <h2 className="text-xl block mb-3 font-bold">Cung cấp các bữa ăn cho bạn</h2>
-            <p className="text-center text-base">Chúng tôi đã chuẩn bị và giao bữa ăn đến tận nhà cho bạn.</p>
-         </div>
+        <div className="flex flex-col w-full md:w-1/3 items-center">
+          <img
+            className="w-[120px]"
+            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-2-2.png"
+            alt=""
+          />
+          <h2 className="text-xl block mb-3 font-bold">
+            Cung cấp các bữa ăn cho bạn
+          </h2>
+          <p className="text-center text-base">
+            Chúng tôi đã chuẩn bị và giao bữa ăn đến tận nhà cho bạn.
+          </p>
+        </div>
 
-         <div className="flex flex-col w-full md:w-1/3 items-center">
-            <img className="w-[120px]" src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-3-1-1.png" alt="" />
-            <h2 className="text-xl block mb-3 font-bold">Ăn và thưởng thức</h2>
-            <p className="text-center text-base">Không mua sắm, không nấu nướng và không dọn dẹp. Cùng gia đình thưởng thức những bữa ăn lành mạnh.</p>
-         </div>
+        <div className="flex flex-col w-full md:w-1/3 items-center">
+          <img
+            className="w-[120px]"
+            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-3-1-1.png"
+            alt=""
+          />
+          <h2 className="text-xl block mb-3 font-bold">Ăn và thưởng thức</h2>
+          <p className="text-center text-base">
+            Không mua sắm, không nấu nướng và không dọn dẹp. Cùng gia đình
+            thưởng thức những bữa ăn lành mạnh.
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default IntroducePage;
+export default withLayout(IntroducePage);

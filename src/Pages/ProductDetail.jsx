@@ -8,6 +8,7 @@ import SuggestProduct from "../Components/Common/SuggestProduct";
 import Selling from "../Components/Selling/Selling";
 import { useParams } from "react-router-dom";
 import { formatCurrency } from "../ultils/format";
+import withLayout from "../HOCs/WithLayout";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -205,4 +206,4 @@ const ProductDetail = () => {
   );
 };
 
-export default ProductDetail;
+export default withLayout(ProductDetail);

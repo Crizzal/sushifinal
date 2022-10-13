@@ -25,14 +25,18 @@ import { FaAlignLeft, FaAngleDown, FaBars, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import MiniCart from "../Cart/MiniCart";
 
-const Navigation = ({isDropDown, setIsModal}) => {
-  
+const Navigation = ({ isDropDown, setIsModal }) => {
   return (
     <div>
-      <img src={banner} alt="" className="w-full object-cover"/>
+      <img src={banner} alt="" className="w-full object-cover" />
       <div className="bg-[#2d2d2d] flex flex-col">
         <div className="flex justify-between items-center m-auto px-4 md:px-0 w-full lg:w-[1360px] text-white">
-          <div className="w-1/4 md:hidden cursor-pointer" onClick={() => setIsModal(true)}><FaBars /></div>
+          <div
+            className="w-1/4 md:hidden cursor-pointer"
+            onClick={() => setIsModal(true)}
+          >
+            <FaBars />
+          </div>
           <Link to="/" className="md:pl-[90px] pb-[10px]">
             <img
               src={logo}
@@ -79,11 +83,14 @@ const Navigation = ({isDropDown, setIsModal}) => {
               </Link>
             </li>
             <li>
-              <Link to="/login"
+              <Link
+                to="/login"
                 className="flex flex-col items-center md:px-[10px] md:mx-[10px]"
               >
                 <img src={user} alt="" />
-                <p className="text-white text-sm font-bold hidden md:block">Tài khoản</p>
+                <p className="text-white text-sm font-bold hidden md:block">
+                  Tài khoản
+                </p>
               </Link>
             </li>
             <li className="relative group">
@@ -91,168 +98,177 @@ const Navigation = ({isDropDown, setIsModal}) => {
                 href=""
                 className="flex flex-col items-center md:px-[10px] mx-[10px]"
               >
-                <img src={cart} alt=""/>
-                <p className="text-white text-sm font-bold hidden md:block">Giỏ hàng</p>
+                <img src={cart} alt="" />
+                <p className="text-white text-sm font-bold hidden md:block">
+                  Giỏ hàng
+                </p>
               </a>
-              <div className="hidden group-hover:block gap-3 absolute top-[55px] right-[15px] z-[99]"><MiniCart /></div>
+              <div className="hidden group-hover:block gap-3 absolute top-[55px] right-[15px] z-[99]">
+                <MiniCart />
+              </div>
             </li>
           </ul>
         </div>
 
         <div className="bg-[#2d2d2d] hidden md:block z-50 w-full duration-300">
-        {/* style={{position:isDropDown&&"fixed",top:"0"}} */}
-        <div className="flex m-auto w-[1360px] px-5">
-          <div className="relative w-1/4 pr-7 group">
-            <div className="bg-[#B61C0B] text-base font-semibold text-white flex items-center justify-between w-full px-4 py-3 rounded-md hover:cursor-pointer group">
-              <div>
-                <FaAlignLeft />
-              </div>
-              <p>DANH MỤC SẢN PHẨM</p>
-              <div>
-                <FaAngleDown />
-              </div>
-            </div>
-            <div className="absolute w-full pr-7 hidden group-hover:block z-50 bg-white"> 
-            {/* style={{display:!isDropDown&&"block"}} */}
-              <ul className="w-full shadow-2xl">
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={gift} alt="" className="mr-[10px]" />
-                    <p>Tổng hợp khuyến mãi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={collection} alt="" className="mr-[10px]" />
-                    <p>Bộ sưu tập sushi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={fish} alt="" className="mr-[10px]" />
-                    <p>Sashimi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={sushi} alt="" className="mr-[10px]" />
-                    <p>Sushi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={salad} alt="" className="mr-[10px]" />
-                    <p>Salad</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={bento} alt="" className="mr-[10px]" />
-                    <p>Bento</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={rice} alt="" className="mr-[10px]" />
-                    <p>Cơm nhật</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={drink} alt="" className="mr-[10px]" />
-                    <p>Đồ uống</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={combo} alt="" className="mr-[10px]" />
-                    <p>Combo Sushi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={sashimi} alt="" className="mr-[10px]" />
-                    <p>Combo Sashimi</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={product} alt="" className="mr-[10px]" />
-                    <p>Sản phẩm đóng gói</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={car} alt="" className="mr-[10px]" />
-                    <p>Giao hàng đúng giờ</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={seven} alt="" className="mr-[10px]" />
-                    <p>Miễn phí đổi trả trong 7 ngày</p>
-                  </a>
-                </li>
-                <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a href="" className="flex w-full">
-                    <img src={sale} alt="" className="mr-[10px]" />
-                    <p>Ưu đãi hấp dẫn mỗi ngày</p>
-                  </a>
-                </li>
-                <li className="p-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
-                  <a
-                    href=""
-                    className="flex items-center w-full px-[15px] py-[10px] border border-[#B61C0B] rounded-md"
-                  >
-                    <img src={phone} alt="" className="mr-[10px]" />
-                    <div className="flex-col">
-                      <p>Gọi mua hàng: 0899 091 779</p>
-                      <p>(8:00 - 21:30 T2 - CN)</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <ul className="flex flex-1 justify-center  items-center gap-5 text-white text-base font-semibold md:ml-20">
-            <li>
-              <Link to="/">Trang chủ</Link>
-            </li>
-            <li>
-              <Link to="/introduce">Giới thiệu</Link>
-            </li>
-            <li>
-              <Link to="/menu">Thực đơn</Link>
-            </li>
-            <li>
-              <Link to="sushiway" href="">Chuyên mục Sushiway</Link>
-            </li>
-            <li>
-              <Link to="/contact">Liên hệ</Link>
-            </li>
-          </ul>
-        </div>
-        </div>
-        <div className="bg-[#2d2d2d] block md:hidden z-50 w-full" style={{position:isDropDown&&"fixed",top:"0"}}></div>
-        <div className="flex-1 md:hidden md:pt-[10px] md:pr-[90px] md:ml-[10px]">
-            <form className="mb-[5px] rounded-3xl overflow-hidden flex items-center justify-between w-[90%] m-auto">
-              <input
-                type="text"
-                className="h-10 outline-none border-none px-2 flex-1 text-black"
-              />
-              <button className="fs-base h-[40px] px-5 flex items-center bg-[#b61c0b] text-white">
-                <div className="m-auto">
-                  <FaSearch />
+          {/* style={{position:isDropDown&&"fixed",top:"0"}} */}
+          <div className="flex m-auto w-[1360px] px-5">
+            <div className="relative w-1/4 pr-7 group">
+              <div className="bg-[#B61C0B] text-base font-semibold text-white flex items-center justify-between w-full px-4 py-3 rounded-md hover:cursor-pointer group">
+                <div>
+                  <FaAlignLeft />
                 </div>
-              </button>
-            </form>
-            <ul className="flex gap-3 justify-center text-white text-sm">
-              <li>Sushi</li>
-              <li>Sashimi</li>
-              <li>Cá hồi</li>
-              <li>Rong biển</li>
+                <p>DANH MỤC SẢN PHẨM</p>
+                <div>
+                  <FaAngleDown />
+                </div>
+              </div>
+              <div className="absolute w-full pr-7 hidden group-hover:block z-50 bg-white">
+                {/* style={{display:!isDropDown&&"block"}} */}
+                <ul className="w-full shadow-2xl">
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={gift} alt="" className="mr-[10px]" />
+                      <p>Tổng hợp khuyến mãi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={collection} alt="" className="mr-[10px]" />
+                      <p>Bộ sưu tập sushi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={fish} alt="" className="mr-[10px]" />
+                      <p>Sashimi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={sushi} alt="" className="mr-[10px]" />
+                      <p>Sushi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={salad} alt="" className="mr-[10px]" />
+                      <p>Salad</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={bento} alt="" className="mr-[10px]" />
+                      <p>Bento</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={rice} alt="" className="mr-[10px]" />
+                      <p>Cơm nhật</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={drink} alt="" className="mr-[10px]" />
+                      <p>Đồ uống</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={combo} alt="" className="mr-[10px]" />
+                      <p>Combo Sushi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={sashimi} alt="" className="mr-[10px]" />
+                      <p>Combo Sashimi</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={product} alt="" className="mr-[10px]" />
+                      <p>Sản phẩm đóng gói</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={car} alt="" className="mr-[10px]" />
+                      <p>Giao hàng đúng giờ</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={seven} alt="" className="mr-[10px]" />
+                      <p>Miễn phí đổi trả trong 7 ngày</p>
+                    </a>
+                  </li>
+                  <li className="px-[15px] py-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a href="" className="flex w-full">
+                      <img src={sale} alt="" className="mr-[10px]" />
+                      <p>Ưu đãi hấp dẫn mỗi ngày</p>
+                    </a>
+                  </li>
+                  <li className="p-[10px] w-full hover:bg-[#F4DDDB] text-sm border-b-[1px] border-[#ddd]">
+                    <a
+                      href=""
+                      className="flex items-center w-full px-[15px] py-[10px] border border-[#B61C0B] rounded-md"
+                    >
+                      <img src={phone} alt="" className="mr-[10px]" />
+                      <div className="flex-col">
+                        <p>Gọi mua hàng: 0899 091 779</p>
+                        <p>(8:00 - 21:30 T2 - CN)</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <ul className="flex flex-1 justify-center  items-center gap-5 text-white text-base font-semibold md:ml-20">
+              <li>
+                <Link to="/">Trang chủ</Link>
+              </li>
+              <li>
+                <Link to="/introduce">Giới thiệu</Link>
+              </li>
+              <li>
+                <Link to="/menu">Thực đơn</Link>
+              </li>
+              <li>
+                <Link to="/sushiway" href="">
+                  Chuyên mục Sushiway
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact">Liên hệ</Link>
+              </li>
             </ul>
           </div>
+        </div>
+        <div
+          className="bg-[#2d2d2d] block md:hidden z-50 w-full"
+          style={{ position: isDropDown && "fixed", top: "0" }}
+        ></div>
+        <div className="flex-1 md:hidden md:pt-[10px] md:pr-[90px] md:ml-[10px]">
+          <form className="mb-[5px] rounded-3xl overflow-hidden flex items-center justify-between w-[90%] m-auto">
+            <input
+              type="text"
+              className="h-10 outline-none border-none px-2 flex-1 text-black"
+            />
+            <button className="fs-base h-[40px] px-5 flex items-center bg-[#b61c0b] text-white">
+              <div className="m-auto">
+                <FaSearch />
+              </div>
+            </button>
+          </form>
+          <ul className="flex gap-3 justify-center text-white text-sm">
+            <li>Sushi</li>
+            <li>Sashimi</li>
+            <li>Cá hồi</li>
+            <li>Rong biển</li>
+          </ul>
+        </div>
       </div>
     </div>
   );

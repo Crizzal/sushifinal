@@ -15,6 +15,7 @@ import {
   fetchAllProducts,
   fetchProductTypes,
 } from "../store/slice/productSlice";
+import withLayout from "../HOCs/WithLayout";
 
 const HomePage = () => {
   const products = useSelector(productSelector);
@@ -97,4 +98,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default withLayout(HomePage);

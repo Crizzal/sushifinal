@@ -2,9 +2,9 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const New = ({ key }) => {
+const New = () => {
   return (
-    <div key={key}>
+    <div>
       <img
         src="https://sushiway.com.vn/wp-content/uploads/2022/04/tintuc-sushiway-1-min-e1656003988704.jpg"
         alt=""

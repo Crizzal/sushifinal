@@ -15,6 +15,7 @@ import {
   productFilterSelector,
   productSelector,
 } from "../store/selector";
+import withLayout from "../HOCs/WithLayout";
 
 const MenuPage = () => {
   const [category, setCategory] = useState("");
@@ -102,4 +103,4 @@ const MenuPage = () => {
   );
 };
 
-export default MenuPage;
+export default withLayout(MenuPage);

@@ -2,12 +2,16 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import New from "../Components/Common/New";
+import withLayout from "../HOCs/WithLayout";
 
 const NewsDetail = () => {
   return (
     <div className="md:mt-8 px-2 w-full md:max-w-[1360px] m-auto">
       <div className="md:flex items-center text-base mt-2">
-        <Link to="/" className="inline">Trang chủ</Link> <span className="mx-1">/</span>
+        <Link to="/" className="inline">
+          Trang chủ
+        </Link>{" "}
+        <span className="mx-1">/</span>
         <p className="text-[#848484] inline">
           ĐẶC QUYỀN ƯU ĐÃI CHO THÀNH VIÊN: GIẢM ĐẾN 15%
         </p>
@@ -139,4 +143,4 @@ const NewsDetail = () => {
   );
 };
 
-export default NewsDetail;
+export default withLayout(NewsDetail);
