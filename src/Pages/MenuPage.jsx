@@ -14,8 +14,6 @@ import {
 } from "../store/slice/productSlice";
 
 const MenuPage = () => {
-  const [price, setPrice] = useState("");
-  const [sort, setSort] = useState("popular");
   const [isModal, setIsModal] = useState(false);
 
   const productTypes = useSelector(productTypeSelector);
@@ -132,7 +130,7 @@ const MenuPage = () => {
         <MenuCategory
           setCategory={onCategoryChange}
           setPrice={onPriceChange}
-          data={productTypes?.data}
+          data={productTypes}
         />
         <div className="w-full md:w-3/4">
           <div className="flex flex-wrap justify-between gap-3 px-4 md:px-0">
