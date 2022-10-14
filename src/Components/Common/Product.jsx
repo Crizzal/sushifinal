@@ -7,7 +7,7 @@ const Product = ({ data: product }) => {
   return (
     <Link to={`/detail/${product?.PRO_ID}`} key={product?.Code}>
       <div className="bg-white rounded-lg p-2 cursor-pointer border border-[#f1f1f1]">
-        {/* <img src={`${product?.Image}`} alt="" className="mb-5" /> */}
+        <img src={`${product?.Image}`} alt="" className="mb-5" />
         <div className="mb-1 text-sm text-[#333333] font-semibold">
           <span dangerouslySetInnerHTML={{ __html: `${product?.Name}` }}></span>
         </div>

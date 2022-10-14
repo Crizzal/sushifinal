@@ -7,7 +7,7 @@ const IntroducePage = () => {
     <div className="max-w-[1360px] m-auto px-4">
       <div className="relative mt-8">
         <img
-          src="https://sushiway.com.vn/wp-content/uploads/2022/07/banner-gt.png"
+          src="http://sushiway.com.vn/wp-content/uploads/2022/07/banner-gt.png"
           alt=""
           className="h-[800px] md:h-auto"
         />
@@ -31,7 +31,7 @@ const IntroducePage = () => {
         </div>
         <img
           className="mt-8"
-          src="https://sushiway.com.vn/wp-content/uploads/2022/09/SSW-bannerchinhanh-2209-1318x395px-01-1536x460.png"
+          src="http://sushiway.com.vn/wp-content/uploads/2022/09/SSW-bannerchinhanh-2209-1318x395px-01-1536x460.png"
           alt=""
         />
       </div>
@@ -39,11 +39,11 @@ const IntroducePage = () => {
       <div className="mt-8 flex flex-col md:flex-row justify-between md:items-center gap-4">
         <div className="flex flex-col gap-4">
           <img
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/Rectangle-17.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/Rectangle-17.png"
             alt=""
           />
           <img
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/Rectangle-17-1.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/Rectangle-17-1.png"
             alt=""
           />
         </div>
@@ -83,7 +83,7 @@ const IntroducePage = () => {
         </div>
         <div className="flex flex-col gap-4">
           <img
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/image-64.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/image-64.png"
             alt=""
           />
         </div>
@@ -96,7 +96,7 @@ const IntroducePage = () => {
           </div>
         </div>
         <img
-          src="https://sushiway.com.vn/wp-content/uploads/2022/07/gioi-thieu-banner-1536x586.jpg"
+          src="http://sushiway.com.vn/wp-content/uploads/2022/07/gioi-thieu-banner-1536x586.jpg"
           alt=""
         />
       </div>
@@ -105,7 +105,7 @@ const IntroducePage = () => {
         <div className="flex flex-col w-full md:w-1/3 items-center">
           <img
             className="w-[120px]"
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-1-1-1.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-1-1-1.png"
             alt=""
           />
           <h2 className="text-xl block mb-3 font-bold">
@@ -120,7 +120,7 @@ const IntroducePage = () => {
         <div className="flex flex-col w-full md:w-1/3 items-center">
           <img
             className="w-[120px]"
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-2-2.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-2-2.png"
             alt=""
           />
           <h2 className="text-xl block mb-3 font-bold">
@@ -134,7 +134,7 @@ const IntroducePage = () => {
         <div className="flex flex-col w-full md:w-1/3 items-center">
           <img
             className="w-[120px]"
-            src="https://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-3-1-1.png"
+            src="http://sushiway.com.vn/wp-content/uploads/2022/07/icon-ssw-3-1-1.png"
             alt=""
           />
           <h2 className="text-xl block mb-3 font-bold">Ăn và thưởng thức</h2>

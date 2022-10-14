@@ -23,7 +23,6 @@ const ProductDetail = () => {
     }
     fetchProduct();
   }, []);
-  console.log(product);
 
   return (
     <div className="md:mt-8 px-2 w-full md:max-w-[1360px] m-auto">

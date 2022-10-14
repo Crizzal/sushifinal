@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
-import banner from "../../assets/image/headerBaner.jpg";
-import logo from "../../assets/image/logo.jpg";
-import order from "../../assets/image/order.png";
-import maps from "../../assets/image/maps.png";
-import user from "../../assets/image/user.png";
-import cart from "../../assets/image/cart.png";
 import bento from "../../assets/image/bentoIcon.png";
 import car from "../../assets/image/carIcon.png";
+import cart from "../../assets/image/cart.png";
 import collection from "../../assets/image/collectionIcon.png";
 import combo from "../../assets/image/comboIcon.png";
 import drink from "../../assets/image/drinkIcon.png";
 import fish from "../../assets/image/fishIcon.png";
 import gift from "../../assets/image/giftIcon.png";
+import banner from "../../assets/image/headerBaner.jpg";
+import logo from "../../assets/image/logo.jpg";
+import maps from "../../assets/image/maps.png";
+import order from "../../assets/image/order.png";
 import phone from "../../assets/image/phoneIcon.png";
 import product from "../../assets/image/productIcon.png";
 import rice from "../../assets/image/riceIcon.png";
@@ -20,12 +19,33 @@ import sale from "../../assets/image/saleIcon.png";
 import sashimi from "../../assets/image/sashimiIcon.png";
 import seven from "../../assets/image/sevenIcon.png";
 import sushi from "../../assets/image/sushiIcon.png";
+import user from "../../assets/image/user.png";
 
 import { FaAlignLeft, FaAngleDown, FaBars, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import MiniCart from "../Cart/MiniCart";
+import { useDispatch, useSelector } from "react-redux";
+import { productFilterSelector } from "../../store/selector";
+import { setProductFilter } from "../../store/slice/productSlice";
+import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ isDropDown, setIsModal }) => {
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+  const productFilter = useSelector(productFilterSelector);
+  const navigate = useNavigate();
+
+  const onSearch = () => {
+    dispatch(setProductFilter({ ...productFilter, name: search }));
+    return navigate("/menu");
+  };
+
+  useEffect(() => {
+    if (search === "") {
+      dispatch(setProductFilter({ ...productFilter, name: "" }));
+    }
+  }, [search]);
+
   return (
     <div>
       <img src={banner} alt="" className="w-full object-cover" />
@@ -45,17 +65,22 @@ const Navigation = ({ isDropDown, setIsModal }) => {
             />
           </Link>
           <div className="hidden md:block flex-1 md:pt-[10px] md:pr-[90px] md:ml-[10px]">
-            <form className="mb-[5px] rounded-3xl overflow-hidden flex items-center justify-between">
+            <div className="mb-[5px] rounded-3xl overflow-hidden flex items-center justify-between">
               <input
                 type="text"
                 className="h-10 outline-none border-none px-2 flex-1 text-black"
+                placeholder="Tìm kiếm sản phẩm"
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="fs-base h-[40px] px-5 flex items-center bg-[#b61c0b] text-white">
+              <button
+                className="fs-base h-[40px] px-5 flex items-center bg-[#b61c0b] text-white"
+                onClick={onSearch}
+              >
                 <div className="m-auto">
                   <FaSearch />
                 </div>
               </button>
-            </form>
+            </div>
             <ul className="hidden md:flex gap-3 text-white text-sm">
               <li>Sushi</li>
               <li>Sashimi</li>

@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="mt-[60px]">
       <div className="relative flex pb-8">
         <img
-          src="https://sushiway.com.vn/wp-content/uploads/2022/07/SSW-BannerWeb5.jpg"
+          src="http://sushiway.com.vn/wp-content/uploads/2022/07/SSW-BannerWeb5.jpg"
           alt=""
           className="m-auto"
         />

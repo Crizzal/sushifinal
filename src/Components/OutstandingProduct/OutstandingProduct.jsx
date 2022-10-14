@@ -5,8 +5,6 @@ import saleBaner from "../../assets/image/saleBaner.png";
 
 const OutstandingProduct = ({ data: products }) => {
   const [isSale, setIsSale] = useState(true);
-  const saleProducts = products?.data?.slice(0, 10) || [];
-  const buyALotProducts = products?.data?.slice(10, 20) || [];
   return (
     <div className="px-4 mt-5 md:mt-[60px]">
       <div className="flex md:items-center flex-col md:flex-row justify-between gap-4">
@@ -40,9 +38,9 @@ const OutstandingProduct = ({ data: products }) => {
         <img src={saleBaner} alt="" className="hidden md:block" />
         <div>
           {isSale ? (
-            <SaleOutstanding data={saleProducts} />
+            <SaleOutstanding data={products?.data?.items} />
           ) : (
-            <BuyALotOutstanding data={buyALotProducts} />
+            <BuyALotOutstanding data={products?.data?.items} />
           )}
         </div>
       </div>

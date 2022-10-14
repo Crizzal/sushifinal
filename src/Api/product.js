@@ -14,7 +14,13 @@ const ProductApi = {
     return await axiosClient.get(productApiUrl.getAllProducts);
   },
   getProducts: async (params) => {
-    return await axiosClient.get(productApiUrl.getProducts, { params });
+    const convertParams = { ...params };
+    if (convertParams.priceFrom === 0) delete convertParams.priceFrom;
+    if (convertParams.priceTo === 0) delete convertParams.priceTo;
+
+    return await axiosClient.get(productApiUrl.getProducts, {
+      params: convertParams,
+    });
   },
   getProductTypes: async () => {
     return await axiosClient.get(productApiUrl.getTypes);

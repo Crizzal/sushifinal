@@ -8,11 +8,15 @@ import SideDishes from "../Components/SideDishes/SideDishes";
 import BannerSlide from "../Components/Slider/BannerSlide";
 import Discount from "../Components/Slider/Discount";
 import SaleSlide from "../Components/Slider/SaleSlide";
-import { productSelector, productTypeSelector } from "../store/selector";
+import {
+  productSelector,
+  productTypeSelector,
+  productFilterSelector,
+} from "../store/selector";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  fetchProducts,
   fetchAllProducts,
+  fetchProducts,
   fetchProductTypes,
 } from "../store/slice/productSlice";
 import withLayout from "../HOCs/WithLayout";
@@ -20,10 +24,11 @@ import withLayout from "../HOCs/WithLayout";
 const HomePage = () => {
   const products = useSelector(productSelector);
   const productTypes = useSelector(productTypeSelector);
+  const productFilter = useSelector(productFilterSelector);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAllProducts());
+    dispatch(fetchProducts(productFilter));
     dispatch(fetchProductTypes());
   }, []);
 

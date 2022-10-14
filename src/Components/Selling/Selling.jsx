@@ -9,8 +9,8 @@ const Selling = ({ data: products }) => {
     <div className="mt-[60px]">
       <h1 className="text-2xl text-[#b61c0b] mb-8">Sản phẩm bán chạy</h1>
       <Swiper slidesPerView={isMobile ? 2 : 5} spaceBetween={10}>
-        {products?.data &&
-          products?.data.map((item) => (
+        {products?.data?.items &&
+          products?.data?.items?.map((item) => (
             <SwiperSlide key={item.Code}>
               <Product data={item} />
             </SwiperSlide>

@@ -32,7 +32,7 @@ function AdminLogin() {
   const onLogin = async () => {
     try {
       const login = await authApi.login(email, password);
-      console.log(login.data);
+
       if (login?.data?.message) {
         setError(login?.data?.message);
       } else {

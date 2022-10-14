@@ -6,7 +6,7 @@ const New = () => {
   return (
     <div>
       <img
-        src="https://sushiway.com.vn/wp-content/uploads/2022/04/tintuc-sushiway-1-min-e1656003988704.jpg"
+        src="http://sushiway.com.vn/wp-content/uploads/2022/04/tintuc-sushiway-1-min-e1656003988704.jpg"
         alt=""
       />
       <div className="p-[6px] mt-5 mb-4 bg-[#FFF4F3] rounded-md text-xs text-[#B61C0B] inline-block">

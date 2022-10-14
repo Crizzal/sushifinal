@@ -24,8 +24,8 @@ const SaleSlide = ({ data: products }) => {
         <p className="text-xs md:text-[13px] mr-5 mb-2">Sale trong ngày</p>
       </div>
       <Swiper slidesPerView={isMobile ? 2 : 6} spaceBetween={10}>
-        {products?.data &&
-          products?.data?.map((item, index) => (
+        {products?.data?.items &&
+          products?.data?.items?.map((item, index) => (
             <SwiperSlide key={index}>
               <Product data={item} />
             </SwiperSlide>

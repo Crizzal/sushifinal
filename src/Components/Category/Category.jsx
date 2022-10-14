@@ -2,7 +2,7 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useCurrentView } from "../../hooks/useCurrentView";
 
-const Category = ({ data: cate }) => {
+const Category = () => {
   const { isMobile } = useCurrentView();
   return (
     <div className="w-full">

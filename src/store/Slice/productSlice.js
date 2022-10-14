@@ -4,13 +4,10 @@ import ProductApi from "../../Api/product";
 export const fetchProducts = createAsyncThunk(
   "product/getProducts",
   async (params, { state }) => {
-    console.log(123);
     try {
-      console.log("fetchProducts", state);
       const response = await ProductApi.getProducts(
         params || state?.productFilter || {}
       );
-      console.log("fetchProducts", response);
       return response.data;
     } catch (error) {}
   }
@@ -41,6 +38,12 @@ const productSlice = createSlice({
     productFilter: {
       page: 1,
       size: 12,
+      priceFrom: 0,
+      priceTo: 0,
+      filterBy: "price",
+      search: "",
+      sortBy: "",
+      sortDir: "",
     },
   },
   reducers: {
