@@ -14,6 +14,7 @@ function useToken() {
 
   const deleteToken = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     setToken();
   };
 

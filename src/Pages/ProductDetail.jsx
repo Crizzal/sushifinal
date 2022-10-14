@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useRouter } from "react";
+import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import ProductApi from "../Api/product";
 import gift from "../assets/image/giftIcon.png";
 import ProductDescription from "../Components/Common/ProductDescription";
 import SuggestProduct from "../Components/Common/SuggestProduct";
 import Selling from "../Components/Selling/Selling";
-import { useParams } from "react-router-dom";
-import { formatCurrency } from "../ultils/format";
 import withLayout from "../HOCs/WithLayout";
-import { useDispatch } from "react-redux";
 import { addToCart } from "../store/slice/cartSlice";
+import { formatCurrency } from "../ultils/format";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
@@ -27,7 +26,7 @@ const ProductDetail = () => {
       } catch (error) {}
     }
     fetchProduct();
-  }, []);
+  }, [id]);
 
   const addItemToCart = () => {
     const item = {
@@ -37,7 +36,7 @@ const ProductDetail = () => {
       price: product?.Price,
       id: product?.PRO_ID,
     };
-    console.log(item);
+
     dispatch(addToCart(item));
   };
 
@@ -204,7 +203,7 @@ const ProductDetail = () => {
                     <div>
                       <h3 className="text-[#2D2D2D] text-sm font-semibold mb-1">
                         NHẬP MÃ: FREESHIP0D
-                      </h3>{" "}
+                      </h3>
                       <p className="text-xs">
                         Áp dụng vào khung giờ 14h - 17h cho giá trị đơn hàng bất
                         kỳ

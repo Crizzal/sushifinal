@@ -25,7 +25,10 @@ export const fetchProductTypes = createAsyncThunk(
   async () => {
     try {
       const response = await ProductApi.getProductTypes();
-      return response.data;
+
+      if (response.data.code === 200) {
+        return response.data.data;
+      }
     } catch (error) {}
   }
 );
@@ -34,7 +37,7 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     products: {},
-    productTypes: {},
+    productTypes: [],
     productFilter: {
       page: 1,
       size: 12,
@@ -56,7 +59,7 @@ const productSlice = createSlice({
       state.products = { ...action.payload };
     });
     builder.addCase(fetchProductTypes.fulfilled, (state, action) => {
-      state.productTypes = { ...action.payload };
+      state.productTypes = action.payload;
     });
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
       state.products = { ...action.payload };
@@ -64,6 +67,6 @@ const productSlice = createSlice({
   },
 });
 
-export const { setProductFilter } = productSlice.actions;
+export const { setProductFilter, setOpenModal } = productSlice.actions;
 
 export default productSlice.reducer;

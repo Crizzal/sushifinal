@@ -22,12 +22,11 @@ import sushi from "../../assets/image/sushiIcon.png";
 import user from "../../assets/image/user.png";
 
 import { FaAlignLeft, FaAngleDown, FaBars, FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import MiniCart from "../Cart/MiniCart";
 import { useDispatch, useSelector } from "react-redux";
-import { cartSelector, productFilterSelector } from "../../store/selector";
+import { Link, useNavigate } from "react-router-dom";
+import { productFilterSelector } from "../../store/selector";
 import { setProductFilter } from "../../store/slice/productSlice";
-import { useNavigate } from "react-router-dom";
+import MiniCart from "../Cart/MiniCart";
 
 const Navigation = ({ isDropDown, setIsModal }) => {
   const productFilter = useSelector(productFilterSelector);

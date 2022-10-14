@@ -32,13 +32,12 @@ function AdminLogin() {
   const onLogin = async () => {
     try {
       const login = await authApi.login(email, password);
-
-      if (login?.data?.message) {
+      if (login?.data?.code !== 200) {
         setError(login?.data?.message);
       } else {
         setToken(login.data?.data?.token);
-        dispatch(setAdmin(login.data));
-        // window.location.href = "/admin";
+        dispatch(setAdmin(login.data.data));
+        window.location.href = "/admin";
       }
     } catch (err) {
       setError(err?.message);
