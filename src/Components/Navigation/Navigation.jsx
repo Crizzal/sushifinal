@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import bento from "../../assets/image/bentoIcon.png";
 import car from "../../assets/image/carIcon.png";
-import cart from "../../assets/image/cart.png";
+import cartIcon from "../../assets/image/cart.png";
 import collection from "../../assets/image/collectionIcon.png";
 import combo from "../../assets/image/comboIcon.png";
 import drink from "../../assets/image/drinkIcon.png";
@@ -25,15 +25,16 @@ import { FaAlignLeft, FaAngleDown, FaBars, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import MiniCart from "../Cart/MiniCart";
 import { useDispatch, useSelector } from "react-redux";
-import { productFilterSelector } from "../../store/selector";
+import { cartSelector, productFilterSelector } from "../../store/selector";
 import { setProductFilter } from "../../store/slice/productSlice";
 import { useNavigate } from "react-router-dom";
 
 const Navigation = ({ isDropDown, setIsModal }) => {
-  const [search, setSearch] = useState("");
-  const dispatch = useDispatch();
   const productFilter = useSelector(productFilterSelector);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
 
   const onSearch = () => {
     dispatch(setProductFilter({ ...productFilter, name: search }));
@@ -123,7 +124,7 @@ const Navigation = ({ isDropDown, setIsModal }) => {
                 href=""
                 className="flex flex-col items-center md:px-[10px] mx-[10px]"
               >
-                <img src={cart} alt="" />
+                <img src={cartIcon} alt="" />
                 <p className="text-white text-sm font-bold hidden md:block">
                   Giỏ hàng
                 </p>

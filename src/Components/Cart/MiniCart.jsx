@@ -2,33 +2,33 @@ import React, { useEffect, useState } from "react";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { cartSelector } from "../../store/selector";
-import cartSlice from "../../store/slice/cartSlice";
-
-// import "../../App.css"
+import cartSlice, {
+  calculateTotal,
+  deleteItem,
+  syncToLocalStorage,
+} from "../../store/slice/cartSlice";
+import { formatCurrency } from "../../ultils/format";
 
 const MiniCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector(cartSelector);
-
-  const [total, setTotal] = useState();
+  const total = useSelector((state) => state.cart.total);
 
   useEffect(() => {
-    const totalMoney = cart.reduce((a, b) => {
-      return a + b.price * b.quantity;
-    }, 0);
-    setTotal(totalMoney);
-  }, [cart.length]);
+    dispatch(calculateTotal());
+    dispatch(syncToLocalStorage());
+  }, [cart]);
 
   return (
     <div className="cart--mini bg-white text-black w-[320px] p-3 max-h-[460px] rounded-md">
-      {!cart.length ? (
+      {cart?.length == 0 ? (
         <div className="text-base font-base text-center">
           Chưa có sản phẩm trong giỏ hàng.
         </div>
       ) : (
         <div>
           <div className="flex flex-col gap-3 max-h-[320px] overflow-y-auto">
-            {cart.map((item) => (
+            {cart?.map((item) => (
               <div
                 className="flex justify-between items-center gap-3 py-1"
                 key={item.id}
@@ -49,9 +49,9 @@ const MiniCart = () => {
                 </div>
                 <div
                   className="text-xl cursor-pointer"
-                  onClick={() =>
-                    dispatch(cartSlice.actions.deleteItem(item.id))
-                  }
+                  onClick={() => {
+                    dispatch(deleteItem(item.id));
+                  }}
                 >
                   <FaRegTimesCircle />
                 </div>
@@ -61,7 +61,7 @@ const MiniCart = () => {
 
           <div className="w-full my-3 py-2 flex justify-center gap-2 items-center border-y border-[#d1d1d1] font-medium opacity-80">
             <p>Tổng số phụ:</p>
-            <p>{total} đ</p>
+            <p>{formatCurrency(total)}</p>
           </div>
           <div className="w-full flex justify-between gap-2">
             <button className="flex-1 text-center py-2 bg-[#B61C0B] rounded-3xl  text-sm text-white font-semibold">

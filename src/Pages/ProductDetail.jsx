@@ -9,10 +9,15 @@ import Selling from "../Components/Selling/Selling";
 import { useParams } from "react-router-dom";
 import { formatCurrency } from "../ultils/format";
 import withLayout from "../HOCs/WithLayout";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/slice/cartSlice";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState();
-  let { id } = useParams();
+  const { id } = useParams();
+  const [numberItem, setNumberItem] = useState(1);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function fetchProduct() {
@@ -23,6 +28,18 @@ const ProductDetail = () => {
     }
     fetchProduct();
   }, []);
+
+  const addItemToCart = () => {
+    const item = {
+      image: product?.Image,
+      name: product?.Name,
+      quantity: numberItem,
+      price: product?.Price,
+      id: product?.PRO_ID,
+    };
+    console.log(item);
+    dispatch(addToCart(item));
+  };
 
   return (
     <div className="md:mt-8 px-2 w-full md:max-w-[1360px] m-auto">
@@ -93,17 +110,30 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex mb-4">
-              <div className="px-2 py-2 border border-[#ddd] cursor-pointer bg-[#f9f9f9]">
+              <div
+                className="px-2 py-2 border border-[#ddd] cursor-pointer bg-[#f9f9f9]"
+                onClick={() => {
+                  if (numberItem > 1) {
+                    setNumberItem(numberItem - 1);
+                  }
+                }}
+              >
                 -
               </div>
-              <div className="px-4 py-2 border border-[#ddd]">1</div>
-              <div className="px-2 py-2 border border-[#ddd] cursor-pointer bg-[#f9f9f9]">
+              <div className="px-4 py-2 border border-[#ddd]">{numberItem}</div>
+              <div
+                className="px-2 py-2 border border-[#ddd] cursor-pointer bg-[#f9f9f9]"
+                onClick={() => setNumberItem(numberItem + 1)}
+              >
                 +
               </div>
             </div>
 
             <div className="flex items-center justify-between gap-3 mb-4">
-              <button className="w-[48%] bg-[#0000001A] text-sm font-semibold h-11 text-black rounded-md">
+              <button
+                className="w-[48%] bg-[#0000001A] text-sm font-semibold h-11 text-black rounded-md"
+                onClick={addItemToCart}
+              >
                 THÊM VÀO GIỎ HÀNG
               </button>
               <button className="w-[48%] bg-[#B61C0B] text-sm font-semibold h-11 text-white rounded-md">
