@@ -1,5 +1,50 @@
+import { useEffect, useLayoutEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import authApi from "../../Api/auth";
+import useToken from "../../hooks/useToken";
+import { setAdmin } from "../../store/slice/userSlice";
+
 function AdminLogin() {
-  console.log("AdminLogin");
+  const dispatch = useDispatch();
+  const { token, setToken } = useToken();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [showError, setShowError] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      window.location.href = "/admin";
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (error) {
+      setShowError(true);
+    }
+    setTimeout(() => {
+      setShowError(false);
+      setError();
+    }, 3000);
+  }, [error]);
+
+  const onLogin = async () => {
+    try {
+      const login = await authApi.login(email, password);
+      console.log(login.data);
+      if (login?.data?.message) {
+        setError(login?.data?.message);
+      } else {
+        setToken(login.data?.data?.token);
+        dispatch(setAdmin(login.data));
+        // window.location.href = "/admin";
+      }
+    } catch (err) {
+      setError(err?.message);
+    }
+  };
+
   return (
     <section className="h-screen">
       <div className="container px-6 py-12 h-full">
@@ -15,9 +60,10 @@ function AdminLogin() {
             <form>
               <div className="mb-6">
                 <input
-                  type="text"
+                  type="email"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   placeholder="Email address"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -26,24 +72,15 @@ function AdminLogin() {
                   type="password"
                   className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              {showError && (
+                <p className="text-base text-red-500 text-center">{error}</p>
+              )}
 
               <div className="flex justify-between items-center mb-6">
-                <div className="form-group form-check">
-                  <input
-                    type="checkbox"
-                    className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                    id="exampleCheck3"
-                    checked
-                  />
-                  <label
-                    className="form-check-label inline-block text-gray-800"
-                    for="exampleCheck2"
-                  >
-                    Remember me
-                  </label>
-                </div>
+                <div className="form-group form-check"></div>
                 <a
                   href="#!"
                   className="text-blue-600 hover:text-blue-700 focus:text-blue-700 active:text-blue-800 duration-200 transition ease-in-out"
@@ -53,10 +90,11 @@ function AdminLogin() {
               </div>
 
               <button
-                type="submit"
+                type="button"
                 className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="light"
+                onClick={onLogin}
               >
                 Sign in
               </button>
