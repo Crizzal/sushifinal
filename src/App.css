@@ -40,3 +40,23 @@
   background-color: transparent;
   top: -30px;
 }
+
+.line::before{
+  content: "";
+  width: 142px;
+  height: 1px;
+  background: #B61C0B;
+  position: absolute;
+  right: 100%;
+  top: 50%;
+}
+
+.line::after{
+  content: "";
+    width: 142px;
+    height: 1px;
+    background: #B61C0B;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+}

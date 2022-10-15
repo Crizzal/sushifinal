@@ -19,6 +19,7 @@ import ScrollToTop from "./ultils/scrollToTop";
 import LoginPage from "./Pages/LoginPage";
 import RegisterPage from "./Pages/RegisterPage";
 import MapPage from "./Pages/MapPage";
+import CartPage from "./Pages/CartPage";
 
 function App() {
   const [showDropDown, setShowDropDown] = useState(false);
@@ -50,6 +51,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/map" element={<MapPage />} />
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
       </ScrollToTop>
 
