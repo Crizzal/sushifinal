@@ -14,8 +14,8 @@ const LazyContactPage = React.lazy(() => import("./Pages/ContactPage"));
 const LazyIntroducePage = React.lazy(() => import("./Pages/IntroducePage"));
 const LazySushiWayPage = React.lazy(() => import("./Pages/SushiWayPage"));
 const LazyProductDetail = React.lazy(() => import("./Pages/ProductDetail"));
-// const LazyNewsDetail = React.lazy(() => import("./Pages/NewsDetail"));
-// const LazyRegisterPage = React.lazy(() => import("./Pages/RegisterPage"));
+const LazyNewsDetail = React.lazy(() => import("./Pages/NewsDetail"));
+const LazyRegisterPage = React.lazy(() => import("./Pages/RegisterPage"));
 const LazyLoginPage = React.lazy(() => import("./Pages/LoginPage"));
 const LazyMapPage = React.lazy(() => import("./Pages/MapPage"));
 const LazyAdminPage = React.lazy(() => import("./Pages/Admin/AdminPage"));
@@ -53,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LazyLoginPage />,
+  },
+  {
+    path: "/register",
+    element: <LazyRegisterPage />,
   },
   {
     path: "/admin",
