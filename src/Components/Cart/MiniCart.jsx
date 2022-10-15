@@ -64,12 +64,12 @@ const MiniCart = () => {
             <p>{total} đ</p>
           </div>
           <div className="w-full flex justify-between gap-2">
-            <button className="flex-1 text-center py-2 bg-[#B61C0B] rounded-3xl  text-sm text-white font-semibold">
+            <Link to="/cart" className="flex-1 text-center py-2 bg-[#B61C0B] rounded-3xl  text-sm text-white font-semibold">
               Xem giỏ hàng
-            </button>
-            <button className="flex-1 text-center py-2 bg-[#B61C0B] rounded-3xl  text-sm text-white font-semibold">
+            </Link>
+            <Link to="/cart" className="flex-1 text-center py-2 bg-[#B61C0B] rounded-3xl  text-sm text-white font-semibold">
               Thanh toán
-            </button>
+            </Link>
           </div>
         </div>
       )}
